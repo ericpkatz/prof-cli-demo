@@ -11,6 +11,7 @@ jobs:
       - image: circleci/postgres:9.6-alpine
         environment:
           POSTGRES_USER: postgres
+          POSTGRES_DB: test_db
 
       # Specify service dependencies here if necessary
       # CircleCI maintains a library of pre-built images
@@ -35,7 +36,7 @@ jobs:
           paths:
             - node_modules
           key: v1-dependencies-{{ checksum "package.json" }}
-      - run: createdb test_db
+      - run: "echo hello" 
 
       # run tests!
       - run: npm test
